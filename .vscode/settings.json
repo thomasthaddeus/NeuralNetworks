@@ -1,0 +1,13 @@
+{
+    "git.allowNoVerifyCommit": true,
+    "git.alwaysShowStagedChangesResourceGroup": false,
+    "git.autofetch": true,
+    "git.autoStash": true,
+    "git.branchProtection": [
+        "main"
+    ],
+    "git.closeDiffOnOperation": true,
+    "git.fetchOnPull": true,
+    "git.mergeEditor": true,
+    "git.pullBeforeCheckout": true
+}
