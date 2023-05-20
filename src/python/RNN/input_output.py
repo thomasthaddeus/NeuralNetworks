@@ -1,9 +1,27 @@
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
+"""input_ouput.py
+
+_summary_
+
+_extended_summary_
+
+Returns:
+    _type_: _description_
+"""
+
+from keras.models import Model
+from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 from sklearn.neighbors import KNeighborsClassifier
 
 class CNNToRNN(Model):
-    def __init__(self, image_shape, num_classes):
+    """
+    CNNToRNN _summary_
+
+    _extended_summary_
+
+    Args:
+        Model (_type_): _description_
+    """
+    def __init__(self, image_shape, num_classes) -> None:
         super().__init__()
 
         # Define the CNN part
@@ -23,15 +41,40 @@ class CNNToRNN(Model):
         ])
 
     def call(self, inputs):
+        """
+        call _summary_
+
+        _extended_summary_
+
+        Args:
+            inputs (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         x = self.cnn(inputs)
         return self.rnn(x)
 
 class RNNToKNN:
-    def __init__(self, n_neighbors, model):
+    """
+     _summary_
+
+    _extended_summary_
+    """
+    def __init__(self, n_neighbors, model) -> None:
         self.knn = KNeighborsClassifier(n_neighbors=n_neighbors)
         self.model = model
 
-    def fit(self, X_train, y_train):
+    def fit(self, X_train, y_train) -> None:
+        """
+        fit _summary_
+
+        _extended_summary_
+
+        Args:
+            X_train (_type_): _description_
+            y_train (_type_): _description_
+        """
         # Extract features from the images with the CNN and RNN
         features = self.model.predict(X_train)
 
@@ -39,6 +82,17 @@ class RNNToKNN:
         self.knn.fit(features, y_train)
 
     def predict(self, X_test):
+        """
+        predict _summary_
+
+        _extended_summary_
+
+        Args:
+            X_test (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         # Extract features from the images with the CNN and RNN
         features = self.model.predict(X_test)
 
