@@ -9,5 +9,8 @@
     "git.closeDiffOnOperation": true,
     "git.fetchOnPull": true,
     "git.mergeEditor": true,
-    "git.pullBeforeCheckout": true
+    "git.pullBeforeCheckout": true,
+    "cSpell.words": [
+        "dtype"
+    ]
 }

@@ -1,16 +1,17 @@
-"""
-CNNModule
+"""cnn_model.py
 
-This module defines the `CNNModel` class for building and training a Convolutional Neural Network (CNN) model for image classification.
+This module defines the CNNModel class for building and training a Convolutional
+Neural Network (CNN) model for image classification.
 
 Usage:
     cnn = CNNModel()
     cnn.build_model(input_shape=(28, 28, 1), num_classes=10)
-    X_train, y_train, X_test, y_test = cnn.load_data()
-    cnn.train(X_train, y_train, X_test, y_test, epochs=10, batch_size=128)
-    cnn.evaluate(X_test, y_test)
+    x_train, y_train, x_test, y_test = cnn.load_data()
+    cnn.train(x_train, y_train, x_test, y_test, epochs=10, batch_size=128)
+    cnn.evaluate(x_test, y_test)
 """
 
+from types import Any, ndarray, dtype
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
@@ -41,63 +42,62 @@ class CNNModel:
         self.model.add(Dense(num_classes, activation='softmax'))
         self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-    def load_data(self):
+    def load_data(self) -> tuple[ndarray[Any, dtype[Any]],
+                               + ndarray[Any, dtype[Any]],
+                               + ndarray[Any, dtype[Any]],
+                               + ndarray[Any, dtype[Any]]]:
         """
         Load and preprocess the MNIST dataset.
 
         Returns:
             tuple: Four arrays representing the preprocessed training and test data and labels.
         """
-        (X_train, y_train), (X_test, y_test) = mnist.load_data()
-        X_train = X_train.astype('float32') / 255
-        X_test = X_test.astype('float32') / 255
-        X_train = np.expand_dims(X_train, axis=-1)
-        X_test = np.expand_dims(X_test, axis=-1)
-        y_train = to_categorical(y_train, num_classes=10)
-        y_test = to_categorical(y_test, num_classes=10)
-        return X_train, y_train, X_test, y_test
+        (x_train, y_train), (x_test, y_test) = mnist.load_data()
+        x_train = x_train.astype('float32') / 255
+        x_test = x_test.astype('float32') / 255
 
-    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size):
+        x_train: ndarray[Any, dtype[Any]] = np.expand_dims(x_train, axis=-1)
+        x_test: ndarray[Any, dtype[Any]] = np.expand_dims(x_test, axis=-1)
+        y_train: ndarray[Any, dtype[Any]] = to_categorical(y_train, num_classes=10)
+        y_test: ndarray[Any, dtype[Any]] = to_categorical(y_test, num_classes=10)
+        return x_train, y_train, x_test, y_test
+
+
+    def train(self, x_train, y_train, x_test, y_test, epochs, batch_size):
         """
         Train the CNN model.
 
         Args:
-            X_train (ndarray): Training data.
+            x_train (ndarray): Training data.
             y_train (ndarray): Training labels.
-            X_test (ndarray): Test data.
+            x_test (ndarray): Test data.
             y_test (ndarray): Test labels.
             epochs (int): Number of training epochs.
             batch_size (int): Batch size for training.
         """
-        self.model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test))
+        return self.model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test))
 
-    def evaluate(self, X_test, y_test):
+
+    def evaluate(self, x_test, y_test):
         """
         Evaluate the trained CNN model on the test data.
 
         Args:
-            X_test (ndarray): Test data.
+            x_test (ndarray): Test data.
             y_test (ndarray): Test labels.
         """
-        loss, accuracy = self.model.evaluate(X_test, y_test)
+        loss: float, accuracy: float = self.model.evaluate(self.x_test, self.y_test)
         print(f'Test Loss: {loss:.4f}')
         print(f'Test Accuracy: {accuracy:.4f}')
 
-    def predict(self, X):
+    def predict(self, x):
         """
         Make predictions using the trained CNN model.
 
         Args:
-            X (ndarray): Input data for making predictions.
+            x (ndarray): Input data for making predictions.
 
         Returns:
             ndarray: Predicted probabilities for each class.
         """
-        return self.model.predict(X)
-
-# Example usage
-cnn = CNNModel()
-cnn.build_model(input_shape=(28, 28, 1), num_classes=10)
-X_train, y_train, X_test, y_test = cnn.load_data()
-cnn.train(X_train, y_train, X_test, y_test, epochs=10, batch_size=128)
-cnn.evaluate(X_test, y_test)
+        return self.model.predict(x)
