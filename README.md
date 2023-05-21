@@ -1,6 +1,12 @@
-# CNN
+# README
 
-Here's an example of a Python program that implements a simple convolutional neural network (CNN) using the Keras library
+## REQUIREMENTS
+
+[Link to Requirements](./docs/REQUIREMENTS.md)
+
+## CNN
+
+Ex. of a Python program that implements a simple convolutional neural network (CNN) using the Keras library
 
 ```python
 import numpy as np
