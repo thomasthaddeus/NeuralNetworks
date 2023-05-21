@@ -12,5 +12,10 @@
     "git.pullBeforeCheckout": true,
     "cSpell.words": [
         "dtype"
+    ],
+    "python.analysis.extraPaths": [
+        "./src/python/kNN",
+        "./src/python/CNN",
+        "./src/python/RNN"
     ]
 }
