@@ -8,7 +8,6 @@ evaluated using this module.
 
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
-from numpy import floating
 
 
 class KNearestNeighbors:

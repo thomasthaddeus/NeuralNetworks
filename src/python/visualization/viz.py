@@ -1,7 +1,7 @@
 """viz.py
 
-This module provides the Visualization class for plotting the training history and the confusion matrix of a trained
-machine learning model.
+This module provides the Visualization class for plotting the training history and
+the confusion matrix of a trained machine learning model.
 
 Example:
     from viz import Visualization
@@ -12,15 +12,18 @@ Example:
 Classes:
     Visualization: Class providing methods for visualizing the performance of a trained model.
 
-This module requires `matplotlib` and `seaborn` to be installed within the Python environment you are using this module in.
+This module requires `matplotlib` and `seaborn` to be installed within the Python environment
+you are using this module in.
 
 Note:
     This module is meant to be used as a utility for machine learning model evaluation tasks.
 """
 
-
+from typing import Any
+from numpy.typing import NDArray
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.metrics import confusion_matrix
 
 class Visualization:
     """
@@ -29,23 +32,23 @@ class Visualization:
     Attributes:
         model (object): A trained model.
     """
-    def __init__(self, model):
+    def __init__(self, model) -> None:
         """
         Initializes the Visualization class with a trained model.
 
         Args:
             model (object): A trained model.
         """
-        self.model = model
+        self.model: Any = model
 
-    def plot_training_history(self, history):
+
+    def plot_training_history(self, history) -> None:
         """
         Plot the training history of the model.
 
         Args:
-            history (History): A History object from keras. Its History.history attribute is a 
+            history (History): A History object from keras. Its History.history attribute is a
                                record of training loss values and metrics values at successive epochs.
-
         """
         fig, axs = plt.subplots(2)
 
@@ -66,7 +69,8 @@ class Visualization:
 
         plt.show()
 
-    def plot_confusion_matrix(self, y_true, y_pred):
+
+    def plot_confusion_matrix(self, y_true, y_pred) -> None:
         """
         Plot a confusion matrix using seaborn.
 
@@ -74,7 +78,7 @@ class Visualization:
             y_true (array-like): True labels.
             y_pred (array-like): Predicted labels by the model.
         """
-        cf_matrix = confusion_matrix(y_true, y_pred)
+        cf_matrix: NDArray = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(10, 7))
         sns.heatmap(cf_matrix, annot=True, cmap='Blues')
         plt.title('Confusion Matrix')

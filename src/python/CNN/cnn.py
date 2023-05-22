@@ -53,13 +53,13 @@ class CNNModel:
         )
 
     def load_data(
-        self,
-    ) -> tuple[
-        ndarray[Any, dtype[Any]],
-        +ndarray[Any, dtype[Any]],
-        +ndarray[Any, dtype[Any]],
-        +ndarray[Any, dtype[Any]],
-    ]:
+            self,
+        ) -> tuple[
+            ndarray[Any, dtype[Any]],
+            +ndarray[Any, dtype[Any]],
+            +ndarray[Any, dtype[Any]],
+            +ndarray[Any, dtype[Any]],
+        ]:
         """
         Load and preprocess the MNIST dataset.
 

@@ -1,8 +1,8 @@
 """rnn2.py
 
-This script defines a class for a Recurrent Neural Network (RNN) using Long Short-Term Memory (LSTM) layers.
-The RNN is implemented with the TensorFlow library and can be utilized for sequence prediction tasks,
-like time-series forecasting or natural language processing tasks.
+This script defines a class for a Recurrent Neural Network (RNN) using Long Short-Term Memory
+(LSTM) layers. The RNN is implemented with the TensorFlow library and can be utilized for
+sequence prediction tasks, like time-series forecasting or natural language processing tasks.
 
 Extended Summary:
 
@@ -11,9 +11,9 @@ The RNN class has two key methods:
 2. `predict`: Makes predictions with the trained model based on the input data.
 
 The model is initialized and structured in the `__init__` method, where LSTM layers are added
-according to the number of units specified in the `layers` parameter. The `return_sequences` parameter
-is set to `True` for all LSTM layers except the last one. The model is then compiled with the
-specified loss function and optimizer.
+according to the number of units specified in the `layers` parameter. The
+`return_sequences` parameter is set to `True` for all LSTM layers except the last one.
+The model is then compiled with the specified loss function and optimizer.
 
 Usage:
 from rnn2 import RNN
@@ -43,7 +43,7 @@ class RNN:
         predict(X): Predict the outputs for given inputs using the trained model.
     """
 
-    def __init__(self, layers, activation_fn, loss_fn, optimizer):
+    def __init__(self, layers, activation_fn, loss_fn, optimizer) -> None:
         """
         Constructs all the necessary attributes for the RNN object.
 
