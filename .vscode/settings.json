@@ -11,6 +11,7 @@
     "git.mergeEditor": true,
     "git.pullBeforeCheckout": true,
     "cSpell.words": [
+        "cmap",
         "dtype"
     ],
     "python.analysis.extraPaths": [
