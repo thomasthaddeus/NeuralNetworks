@@ -4,6 +4,16 @@
 
 [Link to Requirements](./docs/REQUIREMENTS.md)
 
+## Data for testing
+
+To be able to test these algorithms I used a dataset I found on Kaggle
+The dataset is Located [Here]
+ or you can download it using the following command:
+
+```bash
+kaggle datasets download -d puneet6060/intel-image-classification
+```
+
 ## CNN
 
 Ex. of a Python program that implements a simple convolutional neural network (CNN) using the Keras library
@@ -190,3 +200,5 @@ In this example, we have encapsulated the CNN model and related operations withi
 You can create an instance of the CNNModel class and call its methods to perform the desired operations. The build_model method allows you to specify the input shape and the number of classes. The load_data method loads and preprocesses the MNIST dataset. The train method trains the model with the provided data, while the evaluate method evaluates the model's performance on the test data. Finally, the predict method can be used to make predictions on new data.
 
 This class provides a convenient way to reuse the CNN model and its functions by simply creating an instance of the class and calling the appropriate methods with the desired values.
+
+[Here]:  <https://www.kaggle.com/datasets/puneet6060/intel-image-classification> "Intel Image Classification"
