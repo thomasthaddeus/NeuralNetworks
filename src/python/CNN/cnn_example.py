@@ -1,6 +1,6 @@
 """Convolouted Neural Network Example"""
 
-from cnn_model import CNNModel
+from cnn import CNNModel
 
 # Example usage
 cnn = CNNModel()
