@@ -8,19 +8,23 @@ Returns:
     _type_: _description_
 """
 from sklearn.model_selection import train_test_split
-from typing import Any
+
 
 class DataPreparation:
     """
     Class for data preparation tasks.
 
     Args:
-        preprocessing_fn (function): The preprocessing function to be applied to the raw data.
-        split_ratio (float): The ratio for splitting the data into training and testing sets.
+        preprocessing_fn (function):
+            The preprocessing function to be applied to the raw data.
+        split_ratio (float):
+            The ratio for splitting the data into training and testing sets.
 
     Attributes:
-        preprocessing_fn (function): The preprocessing function to be applied to the raw data.
-        split_ratio (float): The ratio for splitting the data into training and testing sets.
+        preprocessing_fn (function):
+            The preprocessing function to be applied to the raw data.
+        split_ratio (float):
+            The ratio for splitting the data into training and testing sets.
     """
 
     def __init__(self, preprocessing_fn, split_ratio) -> None:
@@ -28,11 +32,13 @@ class DataPreparation:
         Initializes a DataPreparation instance.
 
         Args:
-            preprocessing_fn (function): The preprocessing function to be applied to the raw data.
-            split_ratio (float): The ratio for splitting the data into training and testing sets.
+            preprocessing_fn (function):
+                The preprocessing function to be applied to the raw data.
+            split_ratio (float):
+                The ratio for splitting the data into training and testing sets.
         """
-        self.preprocessing_fn: Any = preprocessing_fn
-        self.split_ratio: Any = split_ratio
+        self.preprocessing_fn = preprocessing_fn
+        self.split_ratio = split_ratio
 
     def preprocess(self, raw_data):
         """
@@ -55,7 +61,10 @@ class DataPreparation:
             labels: The corresponding labels.
 
         Returns:
-            A tuple containing the training and testing data and labels: (x_train, x_test, y_train, y_test).
+            A tuple containing the training and testing data and labels:
+                (x_train, x_test, y_train, y_test).
         """
-        x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=self.split_ratio, random_state=42)
+        x_train, x_test, y_train, y_test = train_test_split(
+            data, labels, test_size=self.split_ratio, random_state=42
+        )
         return x_train, x_test, y_train, y_test

@@ -1,37 +1,54 @@
 """knn_main.py
 
-implementation of knn for now
+This script demonstrates the implementation of the k-Nearest Neighbors (k-NN) algorithm
+on the iris dataset using a custom KNearestNeighbors class.
 
-_extended_summary_
+The script includes the main function which loads the iris dataset, splits it into a training
+and test set, creates an instance of the KNearestNeighbors class, trains the model, makes
+predictions on the test set, and evaluates the model's performance based on accuracy.
 """
 
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
-from knn import KNearestNeighbor
-from numpy import floating, _16Bit, _32Bit, _64Bit
+from sklearn.metrics import accuracy_score
+from knn import KNearestNeighbors
 
-def main():
+
+def knn_main():
+    """
+    The main function for running the k-Nearest Neighbors model on the iris dataset.
+
+    This function loads the iris dataset, splits it into training and test sets,
+    trains a k-Nearest Neighbors model on the training set, makes predictions on the test set,
+    and evaluates the model's performance by calculating the accuracy of its predictions.
+    """
     # Load the iris dataset
     iris = load_iris()
-    X = iris.data
-    y = iris.target
+    X = iris.data # pylint disable:invalid-name
+    y = iris.target #pylint disable:invalid-name
 
     # Split the data into a training set and a test set
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
 
     # Create an instance of KNearestNeighbors
     knn = KNearestNeighbors(k=3, problem_type='classification')
 
-    # Train the model
+    # Fit the model to the training data
     knn.train(X_train, y_train)
 
     # Make predictions on the test set
-    predictions = knn.predict(X_test)
+    y_pred = knn.predict(X_test)
 
     # Evaluate the model
-    accuracy: float | floating[_16Bit] | floating[_32Bit] | floating[_64Bit] = knn.evaluate_classification(X_test, y_test)
+    accuracy = accuracy_score(y_test, y_pred)
 
-    print(f'Test accuracy: {accuracy}')
+    # Evaluate the model
+    accuracy2 = knn.evaluate_classification(X_test, y_test)
+
+    print(f"Test accuracy: {accuracy}")
+    print(f"Test accuracy2: {accuracy2}")
 
 if __name__ == "__main__":
-    main()
+    knn_main()

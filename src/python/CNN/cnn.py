@@ -55,10 +55,10 @@ class CNNModel:
     def load_data(
             self,
         ) -> tuple[
+            ndarray[Any, dtype[Any]], \
+            ndarray[Any, dtype[Any]], \
+            ndarray[Any, dtype[Any]], \
             ndarray[Any, dtype[Any]],
-            +ndarray[Any, dtype[Any]],
-            +ndarray[Any, dtype[Any]],
-            +ndarray[Any, dtype[Any]],
         ]:
         """
         Load and preprocess the MNIST dataset.
@@ -81,12 +81,13 @@ class CNNModel:
             print(f"Error loading data: {err}")
             raise
 
+
     def train(
         self,
-        x_train: np.ndarray,
-        y_train: np.ndarray,
-        x_test: np.ndarray,
-        y_test: np.ndarray,
+        x_train: ndarray,
+        y_train: ndarray,
+        x_test: ndarray,
+        y_test: ndarray,
         epochs: int,
         batch_size: int,
     ) -> None:
@@ -113,6 +114,7 @@ class CNNModel:
             validation_data=(x_test, y_test),
         )
 
+
     def evaluate(self, x_test, y_test) -> None:
         """
         Evaluate the trained CNN model on the test data.
@@ -124,6 +126,7 @@ class CNNModel:
         loss, accuracy = self.model.evaluate(x_test, y_test)
         print(f"Test Loss: {loss:.4f}")
         print(f"Test Accuracy: {accuracy:.4f}")
+
 
     def predict(self, arr_x):
         """

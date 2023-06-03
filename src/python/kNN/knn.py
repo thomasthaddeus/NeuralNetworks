@@ -49,7 +49,7 @@ class KNearestNeighbors:
         """
         return hasattr(f"{self.knn} _fit_method")
 
-    def train(self, var_x, var_y) -> None:
+    def train(self, var_x, var_y):
         """
         Fits the k-NN model to the training data.
 
@@ -118,9 +118,11 @@ class KNearestNeighbors:
         Returns:
             array: The distances or indices to the neighbors for each point
                 in the input data.
+        Raises:
+            ValueError: If the model is not yet trained error is returned
         """
         if not self.is_trained:
-            raise Exception("Model is not trained yet.")
+            raise ValueError("Model is not trained yet.")
 
         if return_distance:
             distances, _ = self.knn.kneighbors(var_x)
