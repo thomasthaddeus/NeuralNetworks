@@ -27,7 +27,7 @@ class DataPreparation:
             The ratio for splitting the data into training and testing sets.
     """
 
-    def __init__(self, preprocessing_fn, split_ratio) -> None:
+    def __init__(self, preprocessing_fn: callable, split_ratio: float) -> None:
         """
         Initializes a DataPreparation instance.
 

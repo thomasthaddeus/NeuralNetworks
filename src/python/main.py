@@ -6,11 +6,10 @@ _extended_summary_
 """
 
 
-from config import *  # Import configuration variables
+from config import DataPreparation
 from knn_main import knn_main
 from cnn import CNNModel
 from rnn import RNN
-from data import DataPreparation
 from visualization.viz import Visualization
 
 def main():

@@ -5,9 +5,10 @@ This module provides the Trainer class for training a model.
 
 Extended Summary:
 The Trainer class allows you to train a model using a specified
-optimizer and loss function. It utilizes the Adam optimizer and the Categorical Crossentropy
-loss function by default. The trainer class provides methods for performing a single training
-step (train_step) and for training the model for a given number of epochs (fit).
+optimizer and loss function. It utilizes the Adam optimizer and the Categorical
+Crossentropy loss function by default. The trainer class provides methods for
+performing a single training step (train_step) and for training the model for a
+given number of epochs (fit).
 
 Classes:
 Trainer: Allows training a model with a specified optimizer and loss function.
@@ -26,6 +27,7 @@ from keras.optimizers import Adam
 from keras.losses import CategoricalCrossentropy
 import tensorflow as tf
 
+
 class Trainer:
     """
     The Trainer class allows you to train a model using a specified
@@ -33,9 +35,12 @@ class Trainer:
 
     Attributes:
     model (object): The model to be trained.
-    optimizer (keras.optimizers.Optimizer): The optimizer to be used for training the model.
-    loss_fn (keras.losses.Loss): The loss function to be used for training the model.
+    optimizer (keras.optimizers.Optimizer): The optimizer to be used for
+    training the model.
+    loss_fn (keras.losses.Loss): The loss function to be used for training the
+    model.
     """
+
     def __init__(self, model, learning_rate=0.001):
         """
         Initializes the Trainer class with a model, optimizer, and loss function.
@@ -47,8 +52,6 @@ class Trainer:
         self.model = model
         self.optimizer = Adam(learning_rate)
         self.loss_fn = CategoricalCrossentropy()
-
-
 
     def train_step(self, train_x, train_y):
         """
@@ -69,7 +72,6 @@ class Trainer:
         self.optimizer.apply_gradients(zip(gradients, self.model.trainable_weights))
 
         return loss
-
 
     def fit(self, train_x, train_y, epochs):
         """

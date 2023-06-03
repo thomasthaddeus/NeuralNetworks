@@ -1,4 +1,4 @@
-"""cnn_model.py
+"""cnn.py
 
 This module defines the CNNModel class for building and training a Convolutional
 Neural Network (CNN) model for image classification.
@@ -47,24 +47,23 @@ class CNNModel:
         self.model.add(Dense(64, activation="relu"))
         self.model.add(Dense(num_classes, activation="softmax"))
         self.model.compile(
-            optimizer="adam",
-            loss="categorical_crossentropy",
-            metrics=["accuracy"]
+            optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"]
         )
 
     def load_data(
-            self,
-        ) -> tuple[
-            ndarray[Any, dtype[Any]], \
-            ndarray[Any, dtype[Any]], \
-            ndarray[Any, dtype[Any]], \
-            ndarray[Any, dtype[Any]],
-        ]:
+        self,
+    ) -> tuple[
+        ndarray[Any, dtype[Any]],
+        ndarray[Any, dtype[Any]],
+        ndarray[Any, dtype[Any]],
+        ndarray[Any, dtype[Any]],
+    ]:
         """
         Load and preprocess the MNIST dataset.
 
         Returns:
-            tuple: Four arrays representing the preprocessed training and test data and labels.
+            tuple: Four arrays representing the preprocessed training and test
+            data and labels.
         """
         try:
             (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -80,7 +79,6 @@ class CNNModel:
         except Exception as err:
             print(f"Error loading data: {err}")
             raise
-
 
     def train(
         self,
@@ -104,7 +102,7 @@ class CNNModel:
         """
         if self.model is None:
             raise ValueError(
-                "The model is not built yet. Please call build_model before training."
+                "The model is not built yet." "Please call build_model before training."
             )
         return self.model.fit(
             x_train,
@@ -113,7 +111,6 @@ class CNNModel:
             batch_size=batch_size,
             validation_data=(x_test, y_test),
         )
-
 
     def evaluate(self, x_test, y_test) -> None:
         """
@@ -126,7 +123,6 @@ class CNNModel:
         loss, accuracy = self.model.evaluate(x_test, y_test)
         print(f"Test Loss: {loss:.4f}")
         print(f"Test Accuracy: {accuracy:.4f}")
-
 
     def predict(self, arr_x):
         """
