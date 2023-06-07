@@ -12,9 +12,11 @@ class KNN:
 
     def predict(self, X):
         pass  # Calculate distances and assign labels
-CNN Class
-python
- 
+```
+
+## CNN Class
+
+```python
 class CNN:
     def __init__(self, layers, activation_fn, loss_fn, optimizer):
         pass  # Initialize attributes
@@ -30,9 +32,11 @@ class CNN:
 
     def back_propagation(self, error):
         pass  # Update weights and biases
-RNN Class
-python
- 
+```
+
+## RNN Class
+
+```python
 class RNN:
     def __init__(self, layers, activation_fn, loss_fn, optimizer):
         pass  # Initialize attributes
@@ -48,9 +52,11 @@ class RNN:
 
     def back_propagation(self, error):
         pass  # Update weights and biases
-DataPreparation Class
-python
- 
+```
+
+## DataPreparation Class
+
+```python
 class DataPreparation:
     def __init__(self, preprocessing_fn, split_ratio):
         pass  # Initialize attributes
@@ -60,18 +66,22 @@ class DataPreparation:
 
     def split(self, data, labels):
         pass  # Split data into training and testing sets
-Unittests
-You might have a unittest file per class, for example:
+```
 
+## Unittests
+
+1. Unittest file per class:
+
+```python
 test_knn.py
 test_cnn.py
 test_rnn.py
 test_data_preparation.py
-Each would contain unittests applicable to its class.
+```
 
-Visualization Class
+## Visualization Class
+
 ```python
- 
 import matplotlib.pyplot as plt
 
 class Visualization:
