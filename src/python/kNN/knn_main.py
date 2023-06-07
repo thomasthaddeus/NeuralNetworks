@@ -19,17 +19,17 @@ def knn_main():
     The main function for running the k-Nearest Neighbors model on the iris dataset.
 
     This function loads the iris dataset, splits it into training and test sets,
-    trains a k-Nearest Neighbors model on the training set, makes predictions on the test set,
-    and evaluates the model's performance by calculating the accuracy of its predictions.
+    trains a k-Nearest Neighbors model on the training set, makes predictions
+    on the test set, and evaluates the model's performance by calculating the
+    accuracy of its predictions.
     """
+    # [pylint: disable:invalid-name]
     # Load the iris dataset
     iris = load_iris()
-    X = iris.data # pylint disable:invalid-name
-    y = iris.target #pylint disable:invalid-name
 
     # Split the data into a training set and a test set
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        iris.data, iris.target, test_size=0.2, random_state=42
     )
 
     # Create an instance of KNearestNeighbors
