@@ -6,12 +6,13 @@ This module provides the Trainer class for training a model.
 Extended Summary:
 The Trainer class allows you to train a model using a specified
 optimizer and loss function. It utilizes the Adam optimizer and the Categorical
-Crossentropy loss function by default. The trainer class provides methods for
+Cross entropy loss function by default. The trainer class provides methods for
 performing a single training step (train_step) and for training the model for a
 given number of epochs (fit).
 
 Classes:
-Trainer: Allows training a model with a specified optimizer and loss function.
+    Trainer: Allows training a model with a specified optimizer and loss
+    function.
 
 Attributes:
 model (object): The model to be trained.
