@@ -1,9 +1,9 @@
 """cnn_rnn_knn.py
 
-This module defines the CNNToRNN and RNNToKNN classes, which provide
+This module defines the CNNToRNN and RNNToKNN classes, which provides
 functionality for combining a Convolutional Neural Network (CNN) and a
-Recurrent Neural Network (RNN), and using the output of the CNNToRNN model to train and make predictions using a K-Nearest
-Neighbors (k-NN) classifier.
+Recurrent Neural Network (RNN), and using the output of the CNNToRNN model to
+train and make predictions using a K-Nearest Neighbors (k-NN) classifier.
 
 Classes:
     CNNToRNN: A model that combines a CNN and RNN.
@@ -12,6 +12,7 @@ Classes:
 """
 
 from typing import Tuple, Union
+from rnn import RNN
 import numpy as np
 from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
@@ -66,7 +67,7 @@ class CNNToRNN(Model):
             np.ndarray: The output of the model.
         """
         cnn_output = self.cnn(inputs)
-        return rnn(cnn_output)
+        return RNN(cnn_output)
 
 
 class RNNToKNN:

@@ -89,6 +89,7 @@ class KNearestNeighbors:
         y_pred = self.predict(var_x_test)
         return accuracy_score(y_test, y_pred)
 
+
     def evaluate_regression(self, var_x_test, var_y_tst):
         """
         Evaluates the performance of the k-NN model on a test dataset for
@@ -105,6 +106,7 @@ class KNearestNeighbors:
         """
         y_pred = self.predict(var_x_test)
         return mean_squared_error(var_y_tst, y_pred)
+
 
     def compute_distances(self, var_x, return_distance=True):
         """

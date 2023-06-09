@@ -1,10 +1,12 @@
 """input_output.py
 
 Summary:
-    This file defines two classes: `CNNToRNN` and `RNNToKNN`. `CNNToRNN` is a subclass of `Model` from the `keras.models`
-    module and represents a model that combines a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN).
-    `RNNToKNN` is a class that uses the output of `CNNToRNN` to train and make predictions using a K-Nearest Neighbors (k-NN)
-    classifier.
+    This file defines two classes: `CNNToRNN` and `RNNToKNN`. `CNNToRNN` is a
+    subclass of `Model` from the `keras.models`
+    module and represents a model that combines a Convolutional Neural Network
+    (CNN) and a Recurrent Neural Network (RNN).
+    `RNNToKNN` is a class that uses the output of `CNNToRNN` to train and make
+    predictions using a K-Nearest Neighbors (k-NN) classifier.
 
 Returns:
     None
@@ -14,12 +16,14 @@ from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.neighbors import KNeighborsClassifier
+from rnn import RNN
 
 
 class CNNToRNN(Model):
     """
     CNNToRNN Summary:
-        This class represents a model that combines a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN).
+        This class represents a model that combines a Convolutional Neural
+        Network (CNN) and a Recurrent Neural Network (RNN).
 
     Args:
         Model (type): The base class for the CNNToRNN model.
@@ -29,7 +33,8 @@ class CNNToRNN(Model):
         rnn (SequentialFeatureSelector): The RNN part of the model.
 
     Methods:
-        __init__(self, image_shape, num_classes): Initializes the CNNToRNN model with the given image shape and number of classes.
+        __init__(self, image_shape, num_classes): Initializes the CNNToRNN
+        model with the given image shape and number of classes.
         call(self, inputs): Performs the forward pass of the model.
 
     Returns:
@@ -73,7 +78,7 @@ class CNNToRNN(Model):
             type: The output of the model.
         """
         var_x = self.cnn(inputs)
-        return self.rnn(var_x)
+        return RNN(var_x)
 
 
 class RNNToKNN:

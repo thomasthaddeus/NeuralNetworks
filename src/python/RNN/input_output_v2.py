@@ -14,6 +14,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.neighbors import KNeighborsClassifier
 
+
 class CNNToRNN(Model):
     """
     CNNToRNN Summary:
@@ -33,24 +34,31 @@ class CNNToRNN(Model):
     Returns:
         None
     """
+
     def __init__(self, image_shape, num_classes) -> None:
         super().__init__()
 
         # Define the CNN part
-        self.cnn = Sequential([
-            Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=image_shape),
-            MaxPooling2D(pool_size=(2, 2)),
-            Conv2D(64, kernel_size=(3, 3), activation='relu'),
-            MaxPooling2D(pool_size=(2, 2)),
-            Flatten(),
-        ])
+        self.cnn = Sequential(
+            [
+                Conv2D(
+                    32, kernel_size=(3, 3), activation="relu", input_shape=image_shape
+                ),
+                MaxPooling2D(pool_size=(2, 2)),
+                Conv2D(64, kernel_size=(3, 3), activation="relu"),
+                MaxPooling2D(pool_size=(2, 2)),
+                Flatten(),
+            ]
+        )
 
         # Define the RNN part
-        self.rnn = SequentialFeatureSelector([
-            LSTM(128, return_sequences=True),
-            LSTM(128),
-            Dense(num_classes, activation='softmax'),
-        ])
+        self.rnn = SequentialFeatureSelector(
+            [
+                LSTM(128, return_sequences=True),
+                LSTM(128),
+                Dense(num_classes, activation="softmax"),
+            ]
+        )
 
     def call(self, inputs):
         """
@@ -65,6 +73,7 @@ class CNNToRNN(Model):
         """
         var_x = self.cnn(inputs)
         return self.rnn(var_x)
+
 
 class RNNToKNN:
     """
@@ -86,6 +95,7 @@ class RNNToKNN:
     Returns:
         None
     """
+
     def __init__(self, n_neighbors, model) -> None:
         self.knn = KNeighborsClassifier(n_neighbors=n_neighbors)
         self.model = model
@@ -106,7 +116,6 @@ class RNNToKNN:
         features = self.model.predict(trn_x)
         # Fit the k-NN model on the features
         self.knn.fit(features, trn_y)
-
 
     def predict(self, tst_x):
         """
