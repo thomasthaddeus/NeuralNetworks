@@ -1,4 +1,4 @@
-The provided requirements for the Python program are detailed and clear. Below are general Python class outlines that could be used as a starting point for your project.
+Below are general Python class outlines that contain the initialization of this project.
 
 ## `KNN Class`
 
