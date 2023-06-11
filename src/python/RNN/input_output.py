@@ -6,7 +6,8 @@ Summary:
     module and represents a model that combines a Convolutional Neural Network
     (CNN) and a Recurrent Neural Network (RNN).
     `RNNToKNN` is a class that uses the output of `CNNToRNN` to train and make
-    predictions using a K-Nearest Neighbors (k-NN) classifier.
+    predictions using a K-Nearest Neighbors (k-NN)
+    classifier.
 
 Returns:
     None
@@ -84,10 +85,12 @@ class CNNToRNN(Model):
 class RNNToKNN:
     """
     RNNToKNN Summary:
-        This class uses the output of the CNNToRNN model to train and make predictions using a K-Nearest Neighbors (k-NN) classifier.
+        This class uses the output of the CNNToRNN model to train and make
+        predictions using a K-Nearest Neighbors (k-NN) classifier.
 
     Args:
-        n_neighbors (int): The number of neighbors to consider in the k-NN classifier.
+        n_neighbors (int): The number of neighbors to consider in the k-NN
+        classifier.
         model: The trained CNNToRNN model to extract features.
 
     Attributes:
@@ -95,7 +98,8 @@ class RNNToKNN:
         model: The trained CNNToRNN model used to extract features.
 
     Methods:
-        fit(self, trn_x, trn_y): Fits the k-NN classifier on the extracted features.
+        fit(self, trn_x, trn_y): Fits the k-NN classifier on the extracted
+        features.
         predict(self, tst_x): Makes predictions using the k-NN classifier.
 
     Returns:

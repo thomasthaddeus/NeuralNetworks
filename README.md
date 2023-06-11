@@ -3,6 +3,8 @@
 ## REQUIREMENTS
 
 [Link to Requirements](./docs/REQUIREMENTS.md)
+[Data tree](./docs/tree.html)
+[]
 
 ## Data for testing
 
@@ -18,44 +20,18 @@ kaggle datasets download -d puneet6060/intel-image-classification
 
 Ex. of a Python program that implements a simple convolutional neural network (CNN) using the Keras library
 
-```python
-import numpy as np
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+In this example, we're using the `Keras` library to define and train the CNN. \
+Load the MNIST dataset using the `mnist.load_data()` function from Keras.
+Then preprocess the data by normalizing the pixel values between **0 and 1**` and adding a channel dimension for grayscale images.
 
-# Define the CNN model
-model = Sequential()
-model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(MaxPooling2D((2, 2)))
-model.add(Conv2D(64, (3, 3), activation='relu'))
-model.add(MaxPooling2D((2, 2)))
-model.add(Flatten())
-model.add(Dense(64, activation='relu'))
-model.add(Dense(10, activation='softmax'))
-
-# Compile the model
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-# Load the dataset (assuming MNIST)
-# X_train, y_train, X_test, y_test = ...
-
-# Preprocess the data
-# ...
-
-# Train the model
-model.fit(X_train, y_train, epochs=10, batch_size=128, validation_data=(X_test, y_test))
-
-# Evaluate the model
-loss, accuracy = model.evaluate(X_test, y_test)
-print(f'Test Loss: {loss:.4f}')
-print(f'Test Accuracy: {accuracy:.4f}')
-```
-
-In this example, we're using the `Keras` library to define and train the CNN. The model consists of several layers: two convolutional layers with max pooling, followed by a flattening layer, and then two fully connected (dense) layers. The final layer uses the softmax activation function to output probabilities for each class.
-
-To use this code, you would need to load and preprocess your dataset accordingly. Replace the comments in the code with the necessary code for loading and preprocessing your data. Finally, you can train the model using the fit method and evaluate its performance using the evaluate method.
-
-Note that you need to have `Keras` and the underlying backend (such as `TensorFlow` or `Theano`) installed in your Python environment to run this code. You can install `Keras` via pip install `keras`.
+1. The model consists of several layers:
+    - Two convolutional layers with max pooling
+    - Followed by a flattening layer
+    - Then two fully connected (dense) layers
+    - The final layer uses the softmax activation function to output probabilities for each class
+2. To use this code, you would need to load and preprocess your dataset accordingly.
+3. Replace the comments in the code with the necessary code for loading and preprocessing your data.
+4. Finally, you can train the model using the fit method and evaluate its performance using the evaluate method.
 
 ```python
 # Load the dataset (assuming MNIST)
@@ -86,7 +62,6 @@ print(f'Test Loss: {loss:.4f}')
 print(f'Test Accuracy: {accuracy:.4f}')
 ```
 
-In this continuation, we load the MNIST dataset using the mnist.load_data() function from Keras. We then preprocess the data by normalizing the pixel values between 0 and 1 and adding a channel dimension for grayscale images.
 Next, we convert the class labels to one-hot encoded vectors using the to_categorical function from Keras. This step is necessary when dealing with multi-class classification problems.
 Finally, we train the model using the preprocessed training data and labels. The fit method is used to train the model for a specified number of epochs and a specified batch size. We also provide the test data and labels as the validation data to monitor the model's performance during training.
 After training, we evaluate the model on the test data using the evaluate method, and print the test loss and accuracy.
@@ -133,8 +108,6 @@ loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
 print(f'Test Loss: {loss:.4f}')
 print(f'Test Accuracy: {accuracy:.4f}')
 ```
-
-In this continuation, we've made a few modifications to the code. Here's a summary of the changes:
 
 Reshaped the input data: The shape of the input data is modified to include the channel dimension explicitly. This is achieved by using the reshape method on the X_train and X_test arrays.
 
