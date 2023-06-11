@@ -3,6 +3,10 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from keras.datasets import mnist
 from keras.utils import to_categorical
+import matplotlib.pyplot as plt
+from matplotlib import image
+from keras.utils import plot_model
+
 
 class CNNModel:
     def __init__(self):
@@ -30,7 +34,36 @@ class CNNModel:
         return X_train, y_train, X_test, y_test
 
     def train(self, X_train, y_train, X_test, y_test, epochs, batch_size):
-        self.model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test))
+        history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test))
+        return history
+
+    def plot_model(self):
+        plot_model(self.model, to_file='model_plot.png', show_shapes=True, show_layer_names=True)
+        return image(filename='model_plot.png')
+
+    def plot_training_history(self, history):
+        # Plot training & validation accuracy values
+        plt.figure(figsize=(12, 4))
+
+        plt.subplot(1, 2, 1)
+        plt.plot(history.history['accuracy'])
+        plt.plot(history.history['val_accuracy'])
+        plt.title('Model accuracy')
+        plt.ylabel('Accuracy')
+        plt.xlabel('Epoch')
+        plt.legend(['Train', 'Test'], loc='upper left')
+
+        # Plot training & validation loss values
+        plt.subplot(1, 2, 2)
+        plt.plot(history.history['loss'])
+        plt.plot(history.history['val_loss'])
+        plt.title('Model loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.legend(['Train', 'Test'], loc='upper left')
+
+        plt.tight_layout()
+        plt.show()
 
     def evaluate(self, X_test, y_test):
         loss, accuracy = self.model.evaluate(X_test, y_test)
@@ -44,5 +77,7 @@ class CNNModel:
 cnn = CNNModel()
 cnn.build_model(input_shape=(28, 28, 1), num_classes=10)
 X_train, y_train, X_test, y_test = cnn.load_data()
-cnn.train(X_train, y_train, X_test, y_test, epochs=10, batch_size=128)
+history = cnn.train(X_train, y_train, X_test, y_test, epochs=10, batch_size=128)
 cnn.evaluate(X_test, y_test)
+cnn.plot_model()
+cnn.plot_training_history(history)
