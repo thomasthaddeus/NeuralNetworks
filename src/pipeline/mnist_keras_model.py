@@ -158,8 +158,18 @@ class MnistKerasModel:
             raise ValueError("x_train and y_train should be numpy arrays")
 
         y_train = to_categorical(y_train)
-        self.model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-        self.model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1)
+        self.model.compile(
+            loss='categorical_crossentropy',
+            optimizer='rmsprop',
+            metrics=['accuracy']
+        )
+        self.model.fit(
+            x_train,
+            y_train,
+            batch_size=batch_size,
+            epochs=epochs,
+            verbose=1
+        )
 
 
     def evaluate(self, x_test: NDArray, y_test: NDArray) -> float:

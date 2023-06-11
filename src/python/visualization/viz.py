@@ -19,10 +19,8 @@ Note:
     This module is meant to be used as a utility for machine learning model evaluation tasks.
 """
 
-from typing import Any
-from numpy.typing import NDArray
 import matplotlib.pyplot as plt
-import seaborn as sns
+# import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
 class Visualization:
@@ -39,7 +37,7 @@ class Visualization:
         Args:
             model (object): A trained model.
         """
-        self.model: Any = model
+        self.model = model
 
 
     def plot_training_history(self, history) -> None:
@@ -79,9 +77,9 @@ class Visualization:
             y_true (array-like): True labels.
             y_pred (array-like): Predicted labels by the model.
         """
-        cf_matrix: NDArray = confusion_matrix(y_true, y_pred)
+        # cf_matrix = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(10, 7))
-        sns.heatmap(cf_matrix, annot=True, cmap='Blues')
+        # sns.heatmap(cf_matrix, annot=True, cmap='Blues')
         plt.title('Confusion Matrix')
         plt.ylabel('True label')
         plt.xlabel('Predicted label')
