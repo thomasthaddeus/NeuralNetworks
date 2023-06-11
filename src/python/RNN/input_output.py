@@ -1,9 +1,12 @@
 """input_output.py
 
 Summary:
-    This file defines two classes: `CNNToRNN` and `RNNToKNN`. `CNNToRNN` is a subclass of `Model` from the `keras.models`
-    module and represents a model that combines a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN).
-    `RNNToKNN` is a class that uses the output of `CNNToRNN` to train and make predictions using a K-Nearest Neighbors (k-NN)
+    This file defines two classes: `CNNToRNN` and `RNNToKNN`. `CNNToRNN` is a
+    subclass of `Model` from the `keras.models`
+    module and represents a model that combines a Convolutional Neural Network
+    (CNN) and a Recurrent Neural Network (RNN).
+    `RNNToKNN` is a class that uses the output of `CNNToRNN` to train and make
+    predictions using a K-Nearest Neighbors (k-NN)
     classifier.
 
 Returns:
@@ -19,7 +22,8 @@ from sklearn.neighbors import KNeighborsClassifier
 class CNNToRNN(Model):
     """
     CNNToRNN Summary:
-        This class represents a model that combines a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN).
+        This class represents a model that combines a Convolutional Neural
+        Network (CNN) and a Recurrent Neural Network (RNN).
 
     Args:
         Model (type): The base class for the CNNToRNN model.
@@ -29,7 +33,8 @@ class CNNToRNN(Model):
         rnn (SequentialFeatureSelector): The RNN part of the model.
 
     Methods:
-        __init__(self, image_shape, num_classes): Initializes the CNNToRNN model with the given image shape and number of classes.
+        __init__(self, image_shape, num_classes): Initializes the CNNToRNN
+        model with the given image shape and number of classes.
         call(self, inputs): Performs the forward pass of the model.
 
     Returns:
@@ -79,10 +84,12 @@ class CNNToRNN(Model):
 class RNNToKNN:
     """
     RNNToKNN Summary:
-        This class uses the output of the CNNToRNN model to train and make predictions using a K-Nearest Neighbors (k-NN) classifier.
+        This class uses the output of the CNNToRNN model to train and make
+        predictions using a K-Nearest Neighbors (k-NN) classifier.
 
     Args:
-        n_neighbors (int): The number of neighbors to consider in the k-NN classifier.
+        n_neighbors (int): The number of neighbors to consider in the k-NN
+        classifier.
         model: The trained CNNToRNN model to extract features.
 
     Attributes:
@@ -90,7 +97,8 @@ class RNNToKNN:
         model: The trained CNNToRNN model used to extract features.
 
     Methods:
-        fit(self, trn_x, trn_y): Fits the k-NN classifier on the extracted features.
+        fit(self, trn_x, trn_y): Fits the k-NN classifier on the extracted
+        features.
         predict(self, tst_x): Makes predictions using the k-NN classifier.
 
     Returns:

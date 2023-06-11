@@ -17,6 +17,7 @@
     "python.analysis.extraPaths": [
         "./src/python/kNN",
         "./src/python/CNN",
-        "./src/python/RNN"
+        "./src/python/RNN",
+        "./data"
     ]
 }
