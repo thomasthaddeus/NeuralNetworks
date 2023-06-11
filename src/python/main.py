@@ -6,7 +6,7 @@ _extended_summary_
 """
 
 
-from config import DataPreparation
+from config import DataPreparation as data_prep
 from knn_main import knn_main
 from cnn import CNNModel
 from rnn import RNN
@@ -14,7 +14,6 @@ from visualization.viz import Visualization
 
 def main():
     # Load and preprocess data
-    data_prep = DataPreparation()
     data_prep.load_data()
     data_prep.preprocess_data()
 

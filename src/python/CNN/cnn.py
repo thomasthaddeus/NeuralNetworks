@@ -102,7 +102,8 @@ class CNNModel:
         """
         if self.model is None:
             raise ValueError(
-                "The model is not built yet." "Please call build_model before training."
+                "The model is not built yet."\
+                "Please call build_model before training."
             )
         return self.model.fit(
             x_train,

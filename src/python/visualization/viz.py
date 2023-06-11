@@ -45,8 +45,9 @@ class Visualization:
         Plot the training history of the model.
 
         Args:
-            history (History): A History object from keras. Its History.history attribute is a
-                               record of training loss values and metrics values at successive epochs.
+            history (History): A History object from keras. Its History.history
+            attribute is a record of training loss values and metrics values at
+            successive epochs.
         """
         fig, axs = plt.subplots(2)
 

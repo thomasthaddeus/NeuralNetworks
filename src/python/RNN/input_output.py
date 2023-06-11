@@ -17,6 +17,7 @@ from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.neighbors import KNeighborsClassifier
+from rnn import RNN
 
 
 class CNNToRNN(Model):
@@ -78,7 +79,7 @@ class CNNToRNN(Model):
             type: The output of the model.
         """
         var_x = self.cnn(inputs)
-        return self.rnn(var_x)
+        return RNN(var_x)
 
 
 class RNNToKNN:

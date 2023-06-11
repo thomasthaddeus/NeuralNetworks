@@ -1,7 +1,9 @@
 """cnn_rnn_knn.py
 
-This module defines the CNNToRNN and RNNToKNN classes, which provide functionality for combining a Convolutional Neural Network (CNN)
-and a Recurrent Neural Network (RNN), and using the output of the CNNToRNN model to train and make predictions using a K-Nearest
+This module defines the CNNToRNN and RNNToKNN classes, which provide
+functionality for combining a Convolutional Neural Network (CNN)
+and a Recurrent Neural Network (RNN), and using the output of the CNNToRNN
+model to train and make predictions using a K-Nearest
 Neighbors (k-NN) classifier.
 
 Classes:
@@ -16,18 +18,23 @@ from keras.models import Model
 from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.neighbors import KNeighborsClassifier
+from rnn import RNN
+
 
 class CNNToRNN(Model):
     """
-    CNNToRNN is a model that combines a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN).
+    CNNToRNN is a model that combines a Convolutional Neural Network (CNN) and
+    a Recurrent Neural Network (RNN).
 
     Attributes:
         cnn (Sequential): The CNN part of the model.
         rnn (SequentialFeatureSelector): The RNN part of the model.
 
     Methods:
-        __init__(self, image_shape: Tuple[int, int, int], num_classes: int): Initializes the CNNToRNN model.
-        call(self, inputs: np.ndarray) -> np.ndarray: Performs the forward pass of the model.
+        __init__(self, image_shape: Tuple[int, int, int], num_classes: int):
+        Initializes the CNNToRNN model.
+        call(self, inputs: np.ndarray) -> np.ndarray: Performs the forward pass
+        of the model.
     """
     def __init__(self, image_shape: Tuple[int, int, int], num_classes: int) -> None:
         super().__init__()
@@ -57,21 +64,33 @@ class CNNToRNN(Model):
             np.ndarray: The output of the model.
         """
         cnn_output = self.cnn(inputs)
-        return self.rnn(cnn_output)
+        return RNN(cnn_output)
 
 
 class RNNToKNN:
     """
-    RNNToKNN uses the output of CNNToRNN to train and make predictions using a K-Nearest Neighbors (k-NN) classifier.
+    RNNToKNN Summary:
+        This class uses the output of the CNNToRNN model to train and make
+        predictions using a K-Nearest Neighbors (k-NN) classifier.
+
+    Args:
+        n_neighbors (int): The number of neighbors to consider in the k-NN
+        classifier.
+        model (CNNToRNN): The trained CNNToRNN model to extract features.
 
     Attributes:
         knn (KNeighborsClassifier): The k-NN classifier.
         model (CNNToRNN): The trained CNNToRNN model used to extract features.
 
     Methods:
-        __init__(self, n_neighbors: int, model: CNNToRNN) -> None: Initializes RNNToKNN.
-        fit(self, trn_x: np.ndarray, trn_y: np.ndarray) -> None: Fits the k-NN classifier on the extracted features.
-        predict(self, tst_x: np.ndarray) -> np.ndarray: Makes predictions using the k-NN classifier.
+        fit(self, trn_x: np.ndarray, trn_y: np.ndarray) -> None:
+            Fits the k-NN classifier on the extracted features.
+
+        predict(self, tst_x: np.ndarray) -> np.ndarray:
+            Makes predictions using the k-NN classifier.
+
+    Returns:
+        None
     """
     def __init__(self, n_neighbors: int, model: CNNToRNN) -> None:
         self.knn = KNeighborsClassifier(n_neighbors=n_neighbors)
@@ -92,6 +111,7 @@ class RNNToKNN:
         features = self.model.predict(trn_x)
         # Fit the k-NN model on the features
         self.knn.fit(features, trn_y)
+
 
     def predict(self, tst_x: np.ndarray) -> np.ndarray:
         """
