@@ -1,36 +1,42 @@
 """main.py
 
-_summary_
+Summary:
+    This script is the main driver for a machine learning application. It loads and preprocesses data, initializes various models, trains them, tests them and visualizes the results.
 
-_extended_summary_
+Extended Summary:
+    The script begins by loading and preprocessing data using the methods provided in the DataPreparation class. Next, it initializes k-nearest neighbors, convolutional neural network, and recurrent neural network models. The models are then trained on the preprocessed data, tested and their accuracies are calculated. Finally, the Visualization class is used to visualize the model accuracies.
 """
 
-
-from config import DataPreparation as data_prep
-from knn_main import knn_main
-from cnn import CNNModel
-from rnn import RNN
-from visualization.viz import Visualization
+from sklearn import preprocessing
+from config import DataPreparation
+from python.models.knn import KNNModel
+from python.models.cnn import CNNModel
+from python.models.rnn import RNN
+from viz import Visualization
 
 def main():
+    """Initialize data preparation object"""
+    data_prep = DataPreparation(preprocessing, split_ratio)
+
     # Load and preprocess data
-    data_prep.load_data()
-    data_prep.preprocess_data()
+    raw_data = load_data()
+    data = data_prep.preprocess(raw_data)
+    train_data, test_data, train_labels, test_labels = data_prep.split(data, labels)
 
     # Initialize models
-    knn_model = knn_main()
+    knn_model = KNNModel()
     cnn_model = CNNModel()
     rnn_model = RNN()
 
     # Train models
-    knn_model.train(data_prep.train_data, data_prep.train_labels)
-    cnn_model.train(data_prep.train_data, data_prep.train_labels)
-    rnn_model.train(data_prep.train_data, data_prep.train_labels)
+    knn_model.train(train_data, train_labels)
+    cnn_model.train(train_data, train_labels)
+    rnn_model.train(train_data, train_labels)
 
     # Test models
-    knn_accuracy = knn_model.test(data_prep.test_data, data_prep.test_labels)
-    cnn_accuracy = cnn_model.test(data_prep.test_data, data_prep.test_labels)
-    rnn_accuracy = rnn_model.test(data_prep.test_data, data_prep.test_labels)
+    knn_accuracy = knn_model.test(test_data, test_labels)
+    cnn_accuracy = cnn_model.test(test_data, test_labels)
+    rnn_accuracy = rnn_model.test(test_data, test_labels)
 
     # Visualize results
     visualization = Visualization()

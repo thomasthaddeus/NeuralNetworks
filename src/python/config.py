@@ -1,12 +1,15 @@
 """config.py
 
-_summary_
+Summary:
+    This script defines the DataPreparation class which assists in the preprocessing and splitting of data for machine learning models.
 
-_extended_summary_
+Extended Summary:
+    The DataPreparation class takes a preprocessing function and a split ratio as inputs during initialization. It has methods to preprocess the raw data using the provided function and to split the processed data into training and testing sets according to the provided ratio.
 
 Returns:
-    _type_: _description_
+    None. The script defines a class but does not run any operations by itself.
 """
+
 from sklearn.model_selection import train_test_split
 
 

@@ -20,7 +20,7 @@ Note:
 """
 
 import matplotlib.pyplot as plt
-# import seaborn as sns
+import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
 class Visualization:
@@ -77,9 +77,9 @@ class Visualization:
             y_true (array-like): True labels.
             y_pred (array-like): Predicted labels by the model.
         """
-        # cf_matrix = confusion_matrix(y_true, y_pred)
+        cf_matrix = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(10, 7))
-        # sns.heatmap(cf_matrix, annot=True, cmap='Blues')
+        sns.heatmap(cf_matrix, annot=True, cmap='Blues')
         plt.title('Confusion Matrix')
         plt.ylabel('True label')
         plt.xlabel('Predicted label')

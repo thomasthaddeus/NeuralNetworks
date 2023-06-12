@@ -4,7 +4,7 @@ This module contains unit tests for the CNNModel class.
 """
 import unittest
 import numpy as np
-from cnn import CNNModel
+from python.models.cnn import CNNModel
 
 class TestCNNModel(unittest.TestCase):
     def setUp(self):

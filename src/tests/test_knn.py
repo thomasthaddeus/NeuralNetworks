@@ -8,7 +8,7 @@ _extended_summary_
 import unittest
 import numpy as np
 from sklearn.datasets import make_classification
-from knn import KNearestNeighbors
+from python.models.knn import KNearestNeighbors
 
 class TestKNearestNeighbors(unittest.TestCase):
     def setUp(self):

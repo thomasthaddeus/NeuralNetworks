@@ -18,6 +18,7 @@
         "./src/python/kNN",
         "./src/python/CNN",
         "./src/python/RNN",
-        "./data"
+        "./data",
+        "./src/python/visualization"
     ]
 }

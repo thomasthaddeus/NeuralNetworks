@@ -14,14 +14,23 @@ class CNNModel:
 
     def build_model(self, input_shape, num_classes):
         self.model = Sequential()
-        self.model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
+        self.model.add(Conv2D(
+            32, (3, 3),
+            activation='relu',
+            input_shape=input_shape
+            )
+        )
         self.model.add(MaxPooling2D((2, 2)))
         self.model.add(Conv2D(64, (3, 3), activation='relu'))
         self.model.add(MaxPooling2D((2, 2)))
         self.model.add(Flatten())
         self.model.add(Dense(64, activation='relu'))
         self.model.add(Dense(num_classes, activation='softmax'))
-        self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+        self.model.compile(
+            optimizer='adam',
+            loss='categorical_crossentropy',
+            metrics=['accuracy']
+        )
 
     def load_data(self):
         (X_train, y_train), (X_test, y_test) = mnist.load_data()

@@ -1,5 +1,8 @@
 scikit-learn
-types
 numpy
 keras
 tensorflow
+pydot
+graphviz
+matplotlib
+seaborn
