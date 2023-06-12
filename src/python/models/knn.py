@@ -20,7 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score
 
-class KNearestNeighbors:
+class KNNModel:
     """
     Implements the k-Nearest Neighbors (k-NN) algorithm for both classification
     and regression tasks.
@@ -162,7 +162,7 @@ def knn_main():
     )
 
     # Create an instance of KNearestNeighbors
-    knn = KNearestNeighbors(k=3, problem_type='classification')
+    knn = KNNModel(k=3, problem_type='classification')
 
     # Fit the model to the training data
     knn.train(X_train, y_train)

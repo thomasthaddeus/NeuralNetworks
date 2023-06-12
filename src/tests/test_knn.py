@@ -8,11 +8,11 @@ _extended_summary_
 import unittest
 import numpy as np
 from sklearn.datasets import make_classification
-from python.models.knn import KNearestNeighbors
+from python.models.knn import KNNModel
 
 class TestKNearestNeighbors(unittest.TestCase):
     def setUp(self):
-        self.knn = KNearestNeighbors(3, problem_type='classification')
+        self.knn = KNNModel(3, problem_type='classification')
         self.X, self.y = make_classification(n_samples=50, n_features=4, random_state=42)
 
     def test_train(self):

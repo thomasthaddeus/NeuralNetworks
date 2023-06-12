@@ -8,10 +8,10 @@ Extended Summary:
 """
 
 from sklearn import preprocessing
-from config import DataPreparation
-from python.models.knn import KNNModel
-from python.models.cnn import CNNModel
-from python.models.rnn import RNN
+from data_preparation import DataPreparation
+from models.knn import KNNModel
+from models.cnn import CNNModel
+from models.rnn import RNN
 from viz import Visualization
 
 def main():
