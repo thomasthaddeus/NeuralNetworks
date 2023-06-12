@@ -19,6 +19,7 @@
         "./src/python/CNN",
         "./src/python/RNN",
         "./data",
-        "./src/python/visualization"
+        "./src/python/visualization",
+        "./src/python/models"
     ]
 }
