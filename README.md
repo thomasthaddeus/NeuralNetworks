@@ -2,9 +2,9 @@
 
 ## REQUIREMENTS
 
-[Link to Requirements](./docs/requirements.md)
-[Data tree](./docs/tree.html)
-[Overview](./src/pipeline/overview.ipynb)
+1. [Link to Requirements](./docs/requirements.md)
+2. [Data tree](./docs/tree.html)
+3. [Overview](./src/pipeline/overview.ipynb)
 
 ## Data for testing
 

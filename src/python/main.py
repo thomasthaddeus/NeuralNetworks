@@ -15,8 +15,10 @@ Extended Summary:
 """
 
 # Add the necessary imports
+from data_preparation import DataPreparation
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 from models.knn import KNNModel
 from models.cnn import CNNModel
 from models.rnn import RNN
@@ -26,6 +28,8 @@ from visualization.viz import Visualization
 def main():
     """
     main _summary_
+    # Initialize data preparation object
+    data_prep = DataPreparation(preprocessing_fn=preprocessing.scale, split_ratio=0.2)
 
     _extended_summary_
     """
@@ -61,48 +65,9 @@ def main():
     rnn_model.train(train_data, train_labels, epochs=50, batch_size=32)
 
     # Test models
-    knn_predictions = knn_model.predict(test_data)
-    cnn_predictions = cnn_model.predict(test_data)
-    rnn_predictions = rnn_model.predict(test_data)
-
-    # Initialize Visualization
-    vis = Visualization(knn_model)
-
-    # Visualize training history for CNN and RNN
-    vis.plot_training_history(rnn_model.history)
-
-    # Visualize confusion matrix for all models
-    vis.plot_confusion_matrix(test_labels, knn_predictions)
-    vis.plot_confusion_matrix(test_labels, cnn_predictions.argmax(axis=-1))
-    vis.plot_confusion_matrix(test_labels, rnn_predictions.argmax(axis=-1))
-
-
-def load_data():
-    """
-    Load and return the iris dataset.
-
-    Returns:
-        tuple: The dataset features and labels.
-    """
-    iris = load_iris()
-    return iris.data, iris.target
-
-def split(data, labels, test_size=0.2, random_state=42):
-    """
-    Split the data and labels into training and testing sets.
-
-    Args:
-        data (array-like): The data to be split.
-        labels (array-like): The corresponding labels.
-        test_size (float): The fraction of the data to be used for testing (default: 0.2).
-        random_state (int): The random seed for reproducible results (default: 42).
-
-    Returns:
-        tuple: The training and testing data and labels.
-    """
-    return train_test_split(
-        data, labels, test_size=test_size, random_state=random_state
-    )
+    knn_accuracy = knn_model.test(test_data, test_labels)
+    cnn_accuracy = cnn_model.test(test_data, test_labels)
+    rnn_accuracy = rnn_model.test(test_data, test_labels)
 
 
 if __name__ == "__main__":
