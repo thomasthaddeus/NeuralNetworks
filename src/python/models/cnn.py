@@ -10,8 +10,7 @@ Usage:
     cnn.train(x_train, y_train, x_test, y_test, epochs=10, batch_size=128)
     cnn.evaluate(x_test, y_test)
 """
-from typing import Any, Tuple
-from numpy import ndarray, dtype
+
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
@@ -25,7 +24,7 @@ class CNNModel:
     def __init__(self) -> None:
         self.model = None
 
-    def build_model(self, input_shape: Tuple[int, int, int], num_classes: int) -> None:
+    def build_model(self, input_shape, num_classes):
         """
         Build the CNN model architecture.
 
@@ -50,14 +49,7 @@ class CNNModel:
             optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"]
         )
 
-    def load_data(
-        self,
-    ) -> tuple[
-        ndarray[Any, dtype[Any]],
-        ndarray[Any, dtype[Any]],
-        ndarray[Any, dtype[Any]],
-        ndarray[Any, dtype[Any]],
-    ]:
+    def load_data(self):
         """
         Load and preprocess the MNIST dataset.
 
@@ -70,10 +62,10 @@ class CNNModel:
             x_train = x_train.astype("float32") / 255
             x_test = x_test.astype("float32") / 255
 
-            x_train: ndarray[Any, dtype[Any]] = np.expand_dims(x_train, axis=-1)
-            x_test: ndarray[Any, dtype[Any]] = np.expand_dims(x_test, axis=-1)
-            y_train: ndarray[Any, dtype[Any]] = to_categorical(y_train, num_classes=10)
-            y_test: ndarray[Any, dtype[Any]] = to_categorical(y_test, num_classes=10)
+            x_train = np.expand_dims(x_train, axis=-1)
+            x_test = np.expand_dims(x_test, axis=-1)
+            y_train = to_categorical(y_train, num_classes=10)
+            y_test = to_categorical(y_test, num_classes=10)
             return x_train, y_train, x_test, y_test
 
         except Exception as err:
@@ -82,13 +74,13 @@ class CNNModel:
 
     def train(
         self,
-        x_train: ndarray,
-        y_train: ndarray,
-        x_test: ndarray,
-        y_test: ndarray,
-        epochs: int,
-        batch_size: int,
-    ) -> None:
+        x_train,
+        y_train,
+        x_test,
+        y_test,
+        epochs,
+        batch_size,
+    ):
         """
         Train the CNN model.
 
@@ -102,8 +94,7 @@ class CNNModel:
         """
         if self.model is None:
             raise ValueError(
-                "The model is not built yet."\
-                "Please call build_model before training."
+                "The model is not built yet." "Please call build_model before training."
             )
         return self.model.fit(
             x_train,
@@ -113,7 +104,7 @@ class CNNModel:
             validation_data=(x_test, y_test),
         )
 
-    def evaluate(self, x_test, y_test) -> None:
+    def evaluate(self, x_test, y_test):
         """
         Evaluate the trained CNN model on the test data.
 
