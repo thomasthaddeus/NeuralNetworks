@@ -1,9 +1,8 @@
 ---
 layout: default
 title: Neural Networks
+#theme: just-the-docs
 ---
-
-# Homepage
 
 Welcome to my Neural Networks site. This site serves as a resource for all things related to neural networks, deep learning, and artificial intelligence.
 
