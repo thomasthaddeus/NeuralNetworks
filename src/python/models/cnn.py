@@ -11,7 +11,6 @@ Usage:
     cnn.evaluate(x_test, y_test)
 """
 
-
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
@@ -27,7 +26,6 @@ class CNNModel:
     def __init__(self) -> None:
         self.model = None
 
-    def build_model(self, input_shape, num_classes):
     def build_model(self, input_shape, num_classes):
         """
         Build the CNN model architecture.
@@ -65,25 +63,11 @@ class CNNModel:
         y_test = to_categorical(y_test, num_classes=10)
         return X_train, y_train, X_test, y_test
 
-            x_train = np.expand_dims(x_train, axis=-1)
-            x_test = np.expand_dims(x_test, axis=-1)
-            y_train = to_categorical(y_train, num_classes=10)
-            y_test = to_categorical(y_test, num_classes=10)
-            return x_train, y_train, x_test, y_test
-
         except Exception as err:
             print(f"Error loading data: {err}")
             raise
 
-    def train(
-        self,
-        x_train,
-        y_train,
-        x_test,
-        y_test,
-        epochs,
-        batch_size,
-    ):
+    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size):
         """
         Train the CNN model.
 
@@ -99,8 +83,9 @@ class CNNModel:
             raise ValueError(
                 "The model is not built yet." "Please call build_model before training."
             )
-        return self.model.fit(
-            x_train,
+ 
+        history = self.model.fit(
+            X_train,
             y_train,
             epochs=epochs,
             batch_size=batch_size,
@@ -108,7 +93,6 @@ class CNNModel:
         )
         return history
 
-    def evaluate(self, x_test, y_test):
     def evaluate(self, X_test, y_test) -> None:
         """
         Evaluate the trained CNN model on the test data.

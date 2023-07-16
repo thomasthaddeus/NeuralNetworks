@@ -24,16 +24,17 @@ from models.cnn import CNNModel
 from models.rnn import RNN
 from visualization.viz import Visualization
 
-
 def main():
     """
     main _summary_
+
     # Initialize data preparation object
     data_prep = DataPreparation(preprocessing_fn=preprocessing.scale, split_ratio=0.2)
 
     _extended_summary_
     """
     # Load and preprocess data
+
     data, labels = load_data()
     train_data, test_data, train_labels, test_labels = train_test_split(
         data, labels, test_size=0.2, random_state=42
@@ -43,6 +44,9 @@ def main():
     # scaler = preprocessing.StandardScaler()
     # train_data = scaler.fit_transform(train_data)
     # test_data = scaler.transform(test_data)
+    # raw_data = load_data()  # Implement the load_data() function
+    # data = data_prep.preprocess(raw_data)
+    # train_data, test_data, train_labels, test_labels = data_prep.split(data, labels)  # Define and assign the 'labels' variable
 
     # Initialize models
     knn_model = KNNModel(k=3, problem_type='classification')
@@ -69,6 +73,31 @@ def main():
     cnn_accuracy = cnn_model.test(test_data, test_labels)
     rnn_accuracy = rnn_model.test(test_data, test_labels)
 
+
+def load_data():
+    """
+    Load and return the iris dataset.
+
+    Returns:
+        tuple: The dataset features and labels.
+    """
+    iris = load_iris()
+    return iris.data, iris.target
+
+def split(data, labels, test_size=0.2, random_state=42):
+    """
+    Split the data and labels into training and testing sets.
+
+    Args:
+        data (array-like): The data to be split.
+        labels (array-like): The corresponding labels.
+        test_size (float): The fraction of the data to be used for testing (default: 0.2).
+        random_state (int): The random seed for reproducible results (default: 42).
+
+    Returns:
+        tuple: The training and testing data and labels.
+    """
+    return train_test_split(data, labels, test_size=test_size, random_state=random_state)
 
 if __name__ == "__main__":
     main()
