@@ -7,7 +7,7 @@ Please provide a brief summary of the changes introduced in this PR.
 - [ ] Are the changes significant enough to merit a detailed explanation in the release notes? If yes, please write one.
 - [ ] Are these changes backward compatible or could they be breaking changes?
 
-### Fixes 
+### Fixes
 
 Please list any issues that are resolved by this PR. Use GitHub's "Closes" keyword followed by the issue number. Example: Closes #1234
 
@@ -40,4 +40,3 @@ Please list at least two reviewers for this PR.
 ### Screenshots
 
 If applicable, please add screenshots to help explain your problem or demonstrate the changes. Remove this section if not needed.
-

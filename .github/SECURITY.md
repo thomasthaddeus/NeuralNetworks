@@ -25,7 +25,7 @@ In the event that you discover a vulnerability, we kindly request that you follo
     - A proof-of-concept, or
     - A patch that fixes the issue.
 
-3. **Wait for us to respond**. We strive to respond to security reports within 48 hours. 
+3. **Wait for us to respond**. We strive to respond to security reports within 48 hours.
     We kindly ask you to respect the time and effort it takes to investigate and patch vulnerabilities. With your cooperation, we can address security issues effectively and maintain the safety of our users.
 
 ## Security Update Process
@@ -55,6 +55,6 @@ By adhering to these practices, we aim to provide a secure environment for all o
 
 ## Questions or Concerns?
 
-If you have any non-vulnerability-related security questions or concerns, please feel free to open a discussion in our repository or reach out to us at [Email]. 
- 
+If you have any non-vulnerability-related security questions or concerns, please feel free to open a discussion in our repository or reach out to us at [Email].
+
 [Email]: <mailto:thomasthaddeus@cityuniversity.edu?subject=GitHub%20Security%20Question&body=Hello,%20I%20have%20a%20question%20about%20your%20GitHub%20security%20policy...> "This is the email link"
