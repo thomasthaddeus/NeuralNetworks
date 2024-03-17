@@ -20,6 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score
 
+
 class KNNModel:
     """
     Implements the k-Nearest Neighbors (k-NN) algorithm for both classification
@@ -99,7 +100,6 @@ class KNNModel:
         y_pred = self.predict(var_x_test)
         return accuracy_score(y_test, y_pred)
 
-
     def evaluate_regression(self, var_x_test, var_y_tst):
         """
         Evaluates the performance of the k-NN model on a test dataset for
@@ -116,7 +116,6 @@ class KNNModel:
         """
         y_pred = self.predict(var_x_test)
         return mean_squared_error(var_y_tst, y_pred)
-
 
     def compute_distances(self, var_x, return_distance=True):
         """
@@ -143,6 +142,7 @@ class KNNModel:
             _, indices = self.knn.kneighbors(var_x)
             return indices
 
+
 def knn_main():
     """
     The main function for running the k-Nearest Neighbors model on the iris dataset.
@@ -162,7 +162,7 @@ def knn_main():
     )
 
     # Create an instance of KNearestNeighbors
-    knn = KNNModel(k=3, problem_type='classification')
+    knn = KNNModel(k=3, problem_type="classification")
 
     # Fit the model to the training data
     knn.train(X_train, y_train)
@@ -178,6 +178,7 @@ def knn_main():
 
     print(f"Test accuracy: {accuracy}")
     print(f"Test accuracy2: {accuracy2}")
+
 
 if __name__ == "__main__":
     knn_main()

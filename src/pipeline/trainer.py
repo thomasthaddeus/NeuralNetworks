@@ -70,7 +70,9 @@ class Trainer:
             loss = self.loss_fn(train_y, predictions)
 
         gradients = tape.gradient(loss, self.model.trainable_weights)
-        self.optimizer.apply_gradients(zip(gradients, self.model.trainable_weights))
+        self.optimizer.apply_gradients(
+            zip(gradients, self.model.trainable_weights)
+        )
 
         return loss
 

@@ -35,7 +35,9 @@ class CNNModel:
             num_classes (int): Number of classes in the classification task.
         """
         self.model = Sequential()
-        self.model.add(Conv2D(32, (3, 3), activation="relu", input_shape=input_shape))
+        self.model.add(
+            Conv2D(32, (3, 3), activation="relu", input_shape=input_shape)
+        )
         self.model.add(MaxPooling2D((2, 2)))
         self.model.add(Conv2D(64, (3, 3), activation="relu"))
         self.model.add(MaxPooling2D((2, 2)))
@@ -43,7 +45,9 @@ class CNNModel:
         self.model.add(Dense(64, activation="relu"))
         self.model.add(Dense(num_classes, activation="softmax"))
         self.model.compile(
-            optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"]
+            optimizer="adam",
+            loss="categorical_crossentropy",
+            metrics=["accuracy"],
         )
 
     def load_data(self):
@@ -77,7 +81,8 @@ class CNNModel:
         """
         if self.model is None:
             raise ValueError(
-                "The model is not built yet." "Please call build_model before training."
+                "The model is not built yet."
+                "Please call build_model before training."
             )
 
         history = self.model.fit(
@@ -101,7 +106,6 @@ class CNNModel:
         print(f"Test Loss: {loss:.4f}")
         print(f"Test Accuracy: {accuracy:.4f}")
 
-
     def predict(self, X):
         """
         Make predictions using the trained CNN model.
@@ -114,7 +118,6 @@ class CNNModel:
         """
         return self.model.predict(X)
 
-
     def plot_model(self):
         """plot model"""
         plot_model(
@@ -124,7 +127,6 @@ class CNNModel:
             show_layer_names=True,
         )
         return image(filename="model_plot.png")
-
 
     def plot_training_history(self, history):
         """Plot training & validation accuracy values"""
@@ -150,18 +152,14 @@ class CNNModel:
         plt.tight_layout()
         plt.show()
 
+
 def cnn_main():
     """defines a cnnmodel"""
     cnn = CNNModel()
     cnn.build_model(input_shape=(28, 28, 1), num_classes=10)
     X_train, y_train, X_test, y_test = cnn.load_data()
     history = cnn.train(
-        X_train,
-        y_train,
-        X_test,
-        y_test,
-        epochs=10,
-        batch_size=128
+        X_train, y_train, X_test, y_test, epochs=10, batch_size=128
     )
     cnn.evaluate(X_test, y_test)
     cnn.plot_model()

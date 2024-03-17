@@ -24,6 +24,7 @@ from models.cnn import CNNModel
 from models.rnn import RNN
 from visualization.viz import Visualization
 
+
 def main():
     """
     main _summary_
@@ -49,7 +50,7 @@ def main():
     # train_data, test_data, train_labels, test_labels = data_prep.split(data, labels)  # Define and assign the 'labels' variable
 
     # Initialize models
-    knn_model = KNNModel(k=3, problem_type='classification')
+    knn_model = KNNModel(k=3, problem_type="classification")
     cnn_model = CNNModel()
     cnn_model.build_model(28, 28, 1)
     rnn_model = RNN(
@@ -62,9 +63,12 @@ def main():
     # Train models
     knn_model.train(train_data, train_labels)
     cnn_model.train(
-        train_data, train_labels,
-        test_data, test_labels,
-        epochs=50, batch_size=32
+        train_data,
+        train_labels,
+        test_data,
+        test_labels,
+        epochs=50,
+        batch_size=32,
     )
     rnn_model.train(train_data, train_labels, epochs=50, batch_size=32)
 
@@ -84,6 +88,7 @@ def load_data():
     iris = load_iris()
     return iris.data, iris.target
 
+
 def split(data, labels, test_size=0.2, random_state=42):
     """
     Split the data and labels into training and testing sets.
@@ -97,7 +102,10 @@ def split(data, labels, test_size=0.2, random_state=42):
     Returns:
         tuple: The training and testing data and labels.
     """
-    return train_test_split(data, labels, test_size=test_size, random_state=random_state)
+    return train_test_split(
+        data, labels, test_size=test_size, random_state=random_state
+    )
+
 
 if __name__ == "__main__":
     main()
