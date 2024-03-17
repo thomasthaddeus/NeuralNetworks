@@ -1,4 +1,11 @@
-# README
+# Neural Networks
+Python program that implements a simple convolutional neural network (CNN) using the Keras library
+
+<!-- BADGIE TIME -->
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+
+<!-- END BADGIE TIME -->
 
 ## REQUIREMENTS
 

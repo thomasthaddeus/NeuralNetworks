@@ -63,10 +63,6 @@ class CNNModel:
         y_test = to_categorical(y_test, num_classes=10)
         return X_train, y_train, X_test, y_test
 
-        except Exception as err:
-            print(f"Error loading data: {err}")
-            raise
-
     def train(self, X_train, y_train, X_test, y_test, epochs, batch_size):
         """
         Train the CNN model.
@@ -83,7 +79,7 @@ class CNNModel:
             raise ValueError(
                 "The model is not built yet." "Please call build_model before training."
             )
- 
+
         history = self.model.fit(
             X_train,
             y_train,
