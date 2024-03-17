@@ -1,4 +1,8 @@
-# README
+# Neural Networks
+Python program that implements a simple convolutional neural network (CNN) using the Keras library
+
+<!-- BADGIE TIME -->
+<!-- END BADGIE TIME -->
 
 ## REQUIREMENTS
 
