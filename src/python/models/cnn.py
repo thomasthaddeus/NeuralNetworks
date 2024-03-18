@@ -85,14 +85,13 @@ class CNNModel:
                 "Please call build_model before training."
             )
 
-        history = self.model.fit(
+        return self.model.fit(
             X_train,
             y_train,
             epochs=epochs,
             batch_size=batch_size,
             validation_data=(X_test, y_test),
         )
-        return history
 
     def evaluate(self, X_test, y_test) -> None:
         """
