@@ -38,8 +38,6 @@ Author:
     Thaddeus Thomas
 """
 
-from typing import Tuple
-
 from keras.datasets import mnist
 from keras.layers import Dense
 from keras.models import Sequential

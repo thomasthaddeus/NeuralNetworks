@@ -13,9 +13,9 @@ tensorflow.random.set_seed(35)  # for the reproducibility of results
 def design_model(features):
     model = Sequential(name="my_first_model")
     # without hard-coding
-    input = InputLayer(input_shape=(features.shape[1],))
+    input_ = InputLayer(input_shape=(features.shape[1],))
     # add the input layer
-    model.add(input)
+    model.add(input_)
     # add a hidden layer with 64 neurons
     model.add(Dense(128, activation="relu"))
     # add an output layer to our model

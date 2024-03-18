@@ -137,9 +137,8 @@ class KNNModel:
         if return_distance:
             distances, _ = self.knn.kneighbors(var_x)
             return distances
-        else:
-            _, indices = self.knn.kneighbors(var_x)
-            return indices
+        _, indices = self.knn.kneighbors(var_x)
+        return indices
 
 
 def knn_main():
