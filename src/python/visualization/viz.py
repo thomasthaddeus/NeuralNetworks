@@ -23,6 +23,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
+
 class Visualization:
     """
     Class providing methods for visualizing the performance of a trained model.
@@ -30,6 +31,7 @@ class Visualization:
     Attributes:
         model (object): A trained model.
     """
+
     def __init__(self, model) -> None:
         """
         Initializes the Visualization class with a trained model.
@@ -38,7 +40,6 @@ class Visualization:
             model (object): A trained model.
         """
         self.model = model
-
 
     def plot_training_history(self, history) -> None:
         """
@@ -68,7 +69,6 @@ class Visualization:
 
         plt.show()
 
-
     def plot_confusion_matrix(self, y_true, y_pred) -> None:
         """
         Plot a confusion matrix using seaborn.
@@ -79,8 +79,8 @@ class Visualization:
         """
         cf_matrix = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(10, 7))
-        sns.heatmap(cf_matrix, annot=True, cmap='Blues')
-        plt.title('Confusion Matrix')
-        plt.ylabel('True label')
-        plt.xlabel('Predicted label')
+        sns.heatmap(cf_matrix, annot=True, cmap="Blues")
+        plt.title("Confusion Matrix")
+        plt.ylabel("True label")
+        plt.xlabel("Predicted label")
         plt.show()

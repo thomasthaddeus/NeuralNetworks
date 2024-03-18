@@ -30,7 +30,9 @@ dataset = pd.read_csv("insurance.csv")  # load the dataset
 features = dataset.iloc[:, 0:6]  # choose first 7 columns as features
 labels = dataset.iloc[:, -1]  # choose the final column for prediction
 
-features = pd.get_dummies(features)  # one-hot encoding for categorical variables
+features = pd.get_dummies(
+    features
+)  # one-hot encoding for categorical variables
 features_train, features_test, labels_train, labels_test = train_test_split(
     features, labels, test_size=0.33, random_state=42
 )  # split the data into training and test data

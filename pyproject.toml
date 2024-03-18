@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools >= 64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NeuralNetworks"
+version = "0.0.0"
+authors = [
+  { name="Thaddeus Thomas", email="thomasthaddeus@cityuniversity.edu" },
+]
+description = "Imagery pipeline utilizing neural networks"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.11"
+keywords = ["neuralnetwork", "cnn-keras", "knn-regression"]
+dependencies = [
+    "scikit-learn~=1.4.1.post1",
+    "numpy~=1.26.4",
+    "keras~=3.0.5",
+    "tensorflow~=2.16.1",
+    "graphviz~=0.20.1",
+    "pydot~=2.0.0",
+    "seaborn~=0.13.2",
+    "matplotlib~=3.8.3",
+]
+
+[project.urls]
+"Source" = "https://github.com/thomasthaddeus/NeuralNetworks"
+"Bug Tracker" = "https://github.com/thomasthaddeus/NeuralNetworks/issues"
+
+[tool.black]
+line-length = 79
+target-version = ['py311']

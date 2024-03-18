@@ -34,6 +34,7 @@ class RNN:
 
     _extended_summary_
     """
+
     def __init__(self, layers, activation_fn, loss_fn, optimizer):
         """
         Initialize the RNN model.
@@ -65,7 +66,9 @@ class RNN:
                     )
                 )
 
-        self.model.compile(loss=loss_fn, optimizer=optimizer, metrics=["accuracy"])
+        self.model.compile(
+            loss=loss_fn, optimizer=optimizer, metrics=["accuracy"]
+        )
 
     def train(self, X, y, epochs=10, batch_size=32, validation_split=0.2):
         """
@@ -129,7 +132,10 @@ class CNNToRNN(Model):
         self.cnn = Sequential(
             [
                 Conv2D(
-                    32, kernel_size=(3, 3), activation="relu", input_shape=image_shape
+                    32,
+                    kernel_size=(3, 3),
+                    activation="relu",
+                    input_shape=image_shape,
                 ),
                 MaxPooling2D(pool_size=(2, 2)),
                 Conv2D(64, kernel_size=(3, 3), activation="relu"),

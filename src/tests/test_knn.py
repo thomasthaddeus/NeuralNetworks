@@ -10,10 +10,13 @@ import numpy as np
 from sklearn.datasets import make_classification
 from python.models.knn import KNNModel
 
+
 class TestKNearestNeighbors(unittest.TestCase):
     def setUp(self):
-        self.knn = KNNModel(3, problem_type='classification')
-        self.X, self.y = make_classification(n_samples=50, n_features=4, random_state=42)
+        self.knn = KNNModel(3, problem_type="classification")
+        self.X, self.y = make_classification(
+            n_samples=50, n_features=4, random_state=42
+        )
 
     def test_train(self):
         self.knn.train(self.X, self.y)
@@ -31,5 +34,6 @@ class TestKNearestNeighbors(unittest.TestCase):
         self.assertGreaterEqual(accuracy, 0.0)
         self.assertLessEqual(accuracy, 1.0)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

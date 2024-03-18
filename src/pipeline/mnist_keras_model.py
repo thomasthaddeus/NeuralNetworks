@@ -38,13 +38,13 @@ Author:
     Thaddeus Thomas
 """
 
-
 from typing import Tuple
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import to_categorical
 from numpy.typing import NDArray
+
 
 class MnistKerasModel:
     """
@@ -84,8 +84,9 @@ class MnistKerasModel:
     def __init__(self) -> None:
         self.model = None
 
-
-    def load_data(self) -> Tuple[Tuple[NDArray, NDArray], Tuple[NDArray, NDArray]]:
+    def load_data(
+        self,
+    ) -> Tuple[Tuple[NDArray, NDArray], Tuple[NDArray, NDArray]]:
         """
         Load the MNIST dataset.
 
@@ -101,14 +102,25 @@ class MnistKerasModel:
         try:
             (x_trn, y_trn), (x_tst, y_tst) = mnist.load_data()
         except Exception as err:
-            raise ImportError("An error occurred while loading the MNIST dataset") from err
+            raise ImportError(
+                "An error occurred while loading the MNIST dataset"
+            ) from err
 
         # Preprocess data
-        x_trn = x_trn.reshape((x_trn.shape[0], x_trn.shape[1] * x_trn.shape[2])).astype('float32') / 255
-        x_tst = x_tst.reshape((x_tst.shape[0], x_tst.shape[1] * x_tst.shape[2])).astype('float32') / 255
+        x_trn = (
+            x_trn.reshape(
+                (x_trn.shape[0], x_trn.shape[1] * x_trn.shape[2])
+            ).astype("float32")
+            / 255
+        )
+        x_tst = (
+            x_tst.reshape(
+                (x_tst.shape[0], x_tst.shape[1] * x_tst.shape[2])
+            ).astype("float32")
+            / 255
+        )
 
         return (x_trn, y_trn), (x_tst, y_tst)
-
 
     def build_model(self, input_shape: int, num_classes: int) -> None:
         """
@@ -125,15 +137,24 @@ class MnistKerasModel:
             None
 
         """
-        if not isinstance(input_shape, int) or not isinstance(num_classes, int):
+        if not isinstance(input_shape, int) or not isinstance(
+            num_classes, int
+        ):
             raise ValueError("input_shape and num_classes should be integers")
 
         self.model = Sequential()
-        self.model.add(Dense(512, activation='relu', input_shape=(input_shape,)))
-        self.model.add(Dense(num_classes, activation='softmax'))
+        self.model.add(
+            Dense(512, activation="relu", input_shape=(input_shape,))
+        )
+        self.model.add(Dense(num_classes, activation="softmax"))
 
-
-    def train(self, x_train: NDArray, y_train: NDArray, batch_size: int = 128, epochs: int = 5) -> None:
+    def train(
+        self,
+        x_train: NDArray,
+        y_train: NDArray,
+        batch_size: int = 128,
+        epochs: int = 5,
+    ) -> None:
         """
         Train the model.
 
@@ -154,23 +175,20 @@ class MnistKerasModel:
         if self.model is None:
             raise ValueError("Model not built yet. Call build_model first.")
 
-        if not isinstance(x_train, NDArray) or not isinstance(y_train, NDArray):
+        if not isinstance(x_train, NDArray) or not isinstance(
+            y_train, NDArray
+        ):
             raise ValueError("x_train and y_train should be numpy arrays")
 
         y_train = to_categorical(y_train)
         self.model.compile(
-            loss='categorical_crossentropy',
-            optimizer='rmsprop',
-            metrics=['accuracy']
+            loss="categorical_crossentropy",
+            optimizer="rmsprop",
+            metrics=["accuracy"],
         )
         self.model.fit(
-            x_train,
-            y_train,
-            batch_size=batch_size,
-            epochs=epochs,
-            verbose=1
+            x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1
         )
-
 
     def evaluate(self, x_test: NDArray, y_test: NDArray) -> float:
         """
@@ -196,7 +214,6 @@ class MnistKerasModel:
 
         y_test = to_categorical(y_test)
         return self.model.evaluate(x_test, y_test, verbose=1)[1]
-
 
     def predict(self, x: NDArray) -> NDArray:
         """

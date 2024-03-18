@@ -2,9 +2,11 @@
 
 This module contains unit tests for the CNNModel class.
 """
+
 import unittest
 import numpy as np
 from python.models.cnn import CNNModel
+
 
 class TestCNNModel(unittest.TestCase):
     def setUp(self):
@@ -39,7 +41,9 @@ class TestCNNModel(unittest.TestCase):
         x_train, y_train, x_test, y_test = self.cnn.load_data()
         self.cnn.build_model(self.input_shape, self.num_classes)
         try:
-            self.cnn.train(x_train, y_train, x_test, y_test, self.epochs, self.batch_size)
+            self.cnn.train(
+                x_train, y_train, x_test, y_test, self.epochs, self.batch_size
+            )
         except Exception as e:
             self.fail(f"test_train failed with {e}")
 
@@ -47,7 +51,9 @@ class TestCNNModel(unittest.TestCase):
         # Test model evaluation
         x_train, y_train, x_test, y_test = self.cnn.load_data()
         self.cnn.build_model(self.input_shape, self.num_classes)
-        self.cnn.train(x_train, y_train, x_test, y_test, self.epochs, self.batch_size)
+        self.cnn.train(
+            x_train, y_train, x_test, y_test, self.epochs, self.batch_size
+        )
 
         try:
             self.cnn.evaluate(x_test, y_test)
@@ -58,7 +64,9 @@ class TestCNNModel(unittest.TestCase):
         # Test model prediction
         x_train, y_train, x_test, y_test = self.cnn.load_data()
         self.cnn.build_model(self.input_shape, self.num_classes)
-        self.cnn.train(x_train, y_train, x_test, y_test, self.epochs, self.batch_size)
+        self.cnn.train(
+            x_train, y_train, x_test, y_test, self.epochs, self.batch_size
+        )
 
         # Generate a random example for prediction
         random_example = np.random.rand(1, *self.input_shape)
@@ -69,6 +77,7 @@ class TestCNNModel(unittest.TestCase):
 
         # Check if the prediction has the right shape
         self.assertEqual(prediction.shape, (1, self.num_classes))
+
 
 if __name__ == "__main__":
     unittest.main()
