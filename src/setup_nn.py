@@ -1,12 +1,11 @@
 import pandas as pd
 import tensorflow
-from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler
+from keras.layers import Dense, InputLayer
 from keras.models import Sequential
-from keras.layers import InputLayer
-from keras.layers import Dense
 from keras.optimizers import Adam
+from sklearn.compose import ColumnTransformer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 tensorflow.random.set_seed(35)  # for the reproducibility of results
 

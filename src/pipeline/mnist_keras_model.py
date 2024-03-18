@@ -39,9 +39,10 @@ Author:
 """
 
 from typing import Tuple
+
 from keras.datasets import mnist
-from keras.models import Sequential
 from keras.layers import Dense
+from keras.models import Sequential
 from keras.utils import to_categorical
 from numpy.typing import NDArray
 
@@ -86,7 +87,7 @@ class MnistKerasModel:
 
     def load_data(
         self,
-    ) -> Tuple[Tuple[NDArray, NDArray], Tuple[NDArray, NDArray]]:
+    ) -> tuple[tuple[NDArray, NDArray], tuple[NDArray, NDArray]]:
         """
         Load the MNIST dataset.
 

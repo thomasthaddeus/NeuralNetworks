@@ -14,11 +14,10 @@ scikit-learn library. The k-NN model can be trained, used for predictions, and
 evaluated using this module.
 """
 
-from sklearn.metrics import accuracy_score, mean_squared_error
-from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
-from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, mean_squared_error
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 
 
 class KNNModel:
