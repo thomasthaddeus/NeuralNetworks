@@ -24,9 +24,9 @@ train_step(train_x, train_y): Perform a single training step.
 fit(train_x, train_y, epochs): Train the model on the given data for the specified number of epochs.
 """
 
-from keras.optimizers import Adam
-from keras.losses import CategoricalCrossentropy
 import tensorflow as tf
+from keras.losses import CategoricalCrossentropy
+from keras.optimizers import Adam
 
 
 class Trainer:

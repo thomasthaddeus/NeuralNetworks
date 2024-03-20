@@ -22,10 +22,10 @@ Returns:
 """
 
 import tensorflow as tf
+from keras.layers import LSTM, Conv2D, Dense, Flatten, MaxPooling2D
+from keras.models import Model, Sequential
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.neighbors import KNeighborsClassifier
-from keras.models import Model, Sequential
-from keras.layers import Conv2D, MaxPooling2D, Flatten, LSTM, Dense
 
 
 class RNN:

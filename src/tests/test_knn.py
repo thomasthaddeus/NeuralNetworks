@@ -6,9 +6,10 @@ _extended_summary_
 """
 
 import unittest
+
 import numpy as np
-from sklearn.datasets import make_classification
 from python.models.knn import KNNModel
+from sklearn.datasets import make_classification
 
 
 class TestKNearestNeighbors(unittest.TestCase):

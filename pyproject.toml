@@ -28,6 +28,42 @@ dependencies = [
 "Source" = "https://github.com/thomasthaddeus/NeuralNetworks"
 "Bug Tracker" = "https://github.com/thomasthaddeus/NeuralNetworks/issues"
 
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
 [tool.black]
 line-length = 79
 target-version = ['py311']
+
+[tool.ruff]
+line-length = 79
+fix = true
+
+include = ["*.py", "*.pyi", "**/pyproject.toml"]
+
+[tool.ruff.lint]
+select = [
+    "A",     # flake8-builtins
+    "ASYNC", # flake8-async
+    "E",     # Error
+    "EXE",   # flake8-executable
+    "FA",    # flake8-future-annotations
+    "I",     # isort
+    "PIE",   # flake8-pie
+    "PYI",   # flake8-pyi
+    "Q",     # flake8-quotes
+    "RET",   # flake8-return
+    "RUF",   # Ruff-specific rules
+    "S",     # flake8-bandit
+    "SIM",   # flake8-simplify
+    "SLOT",  # flake8-slots
+    "TCH",   # flake8-type-checking
+    "UP",    # pyupgrade
+    "W",     # Warning
+    "YTT",   # flake8-2020
+]
+extend-ignore = [
+    "E501",   # line-too-long
+    "S101",   # use of assert for tests and type narrowing
+    "SIM117", # Use multiple with statements at the same time
+]

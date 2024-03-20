@@ -11,12 +11,12 @@ Usage:
     cnn.evaluate(x_test, y_test)
 """
 
-import numpy as np
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-from keras.datasets import mnist
-from keras.utils import to_categorical, plot_model
 import matplotlib.pyplot as plt
+import numpy as np
+from keras.datasets import mnist
+from keras.layers import Conv2D, Dense, Flatten, MaxPooling2D
+from keras.models import Sequential
+from keras.utils import plot_model, to_categorical
 from matplotlib import image
 
 
@@ -85,14 +85,13 @@ class CNNModel:
                 "Please call build_model before training."
             )
 
-        history = self.model.fit(
+        return self.model.fit(
             X_train,
             y_train,
             epochs=epochs,
             batch_size=batch_size,
             validation_data=(X_test, y_test),
         )
-        return history
 
     def evaluate(self, X_test, y_test) -> None:
         """

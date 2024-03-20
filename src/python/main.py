@@ -16,12 +16,12 @@ Extended Summary:
 
 # Add the necessary imports
 from data_preparation import DataPreparation
+from models.cnn import CNNModel
+from models.knn import KNNModel
+from models.rnn import RNN
+from sklearn import preprocessing
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
-from models.knn import KNNModel
-from models.cnn import CNNModel
-from models.rnn import RNN
 from visualization.viz import Visualization
 
 
